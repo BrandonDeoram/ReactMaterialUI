@@ -49,7 +49,6 @@ export default function UserForm() {
                 <TextfieldWrapper name="lastName" className="formP" placeholder="Doe" />
               </Grid>
 
-              {/* <button type="submit">Submit</button> */}
               <Grid item xs={12}>
                 <Typography className="names">Email</Typography>
                 <TextfieldWrapper
