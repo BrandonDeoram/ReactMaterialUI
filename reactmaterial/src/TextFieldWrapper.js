@@ -13,9 +13,14 @@ export const TextfieldWrapper = ({
         fullWidth: true,
         ...field,
         ...otherProps,
-        required:true,
+        required: true,
         variant: 'outlined',
     };
+
+    if (meta && meta.touched && meta.error) {
+        configTextField.error = true;
+        configTextField.helperText = meta.error;
+    }
 
     return (<TextField {...configTextField} />);
 }

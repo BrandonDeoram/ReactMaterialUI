@@ -60,9 +60,10 @@
 .names {
   margin-left: 10px !important;
   font-size: 18px !important;
-  
+
 }
 
+/* 
 .email {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1) !important;
   border: 1px !important;
@@ -70,4 +71,28 @@
   width: 980px !important;
   margin-left: 10px !important;
   font-size: 18px !important;
+} */
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.detailsAnswers {
+
+  margin-bottom: 30px !important;
+  height: 30px !important;
+}
+
+.h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  height: 30px;
+
+}
+
+.grid-details {
+  text-align: center !important;
 }

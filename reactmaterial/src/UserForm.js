@@ -6,17 +6,23 @@ import { Formik, Form } from 'formik';
 import { TextfieldWrapper } from './TextFieldWrapper'
 import prov from './provinces.json';
 import { SelectWrapper } from './SelectWrapper';
+import * as Yup from "yup";
+export default function UserForm(props) {
 
-export default function UserForm() {
-
-  // const [firstName, setFirstName] = useState("");
-
+  const formValidation = Yup.object().shape({
+    firstName: Yup.string().matches('[a-zA-Z]+', "Letters Only").required('Required'),
+    lastName: Yup.string().matches('[a-zA-Z]+', "Letters Only").required('Required'),
+    middleName: Yup.string().matches('[a-zA-Z]+', "Letters Only"),
+    email: Yup.string().email('Invalid Email').required('Required'),
+    // number: Yup.number().integer().test('len', '10 Digit Number', val => val.toString().length === 10).typeError('Please enter valid number').required('Required'),
+  });
   return (
     <div>
       <h1 className="h1">Personal Details</h1>
 
       <Paper variant="elevation" elevation={10} className={'Paper-root'} >
         <Formik
+          validationSchema={formValidation}
           initialValues={{
             firstName: '',
             lastName: '',
@@ -31,7 +37,7 @@ export default function UserForm() {
             otherNumber: '',
           }}
           onSubmit={(values) => {
-            console.log(values);
+            props.next(values);
           }}
         >
           <Form>
@@ -48,7 +54,6 @@ export default function UserForm() {
                 <Typography className="names">Last Name</Typography>
                 <TextfieldWrapper name="lastName" className="formP" placeholder="Doe" />
               </Grid>
-
               <Grid item xs={12}>
                 <Typography className="names">Email</Typography>
                 <TextfieldWrapper
@@ -56,6 +61,7 @@ export default function UserForm() {
                   name="email"
                   placeholder="john@acme.com"
                   type="email"
+                  sx={{ width: "980px", paddingLeft: '10px' }}
                 />
               </Grid>
               <Grid item xs={6}>
